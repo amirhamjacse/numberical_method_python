@@ -1,20 +1,20 @@
-# Initial guess 
-# 2x**2-5x+3=0 main equation
-x = 0  # Starting point
+x = 0
 max_iterations = 100
 
-# Simple iteration method
+
 for i in range(max_iterations):
-    x_new = (2 * x**2 + 3) / 5  # Update using the rearranged equation
-    x_new_rounded = round(x_new, 4)  # Round to 4 decimal places
-    print(f"Iteration {i + 1}: x = {x_new_rounded}")
+
+    f_x = 2*x**2 - 5*x+ 3
+
+    df_x = 4*x - 5
     
-    # Check if the new value is equal to the old value
-    if x_new_rounded == round(x, 4):
-        print(f"Converged to root: {x_new_rounded} after {i + 1} iterations.")
+
+    x_new = x - f_x / df_x
+    
+    if abs(x_new - x) < 0.0001:
+        print("Root found:", x_new)
         break
     
-    # Update x for the next iteration
     x = x_new
 else:
-    print(f"No convergence after {max_iterations} iterations. Final x: {round(x, 4)}")
+    print("No solution found within the maximum number of iterations.")
